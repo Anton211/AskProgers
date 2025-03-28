@@ -1,0 +1,98 @@
+{% load static %}
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>base</title>
+    <link href="{% static "/css/bootstrap.min.css" %}" rel="stylesheet" />
+</head>
+
+<body>
+    <nav class="navbar bg-dark border-bottom border-body mb-4 sticky-top" data-bs-theme="dark">
+        <div class="container justify-content-around text-white">
+            <a class="navbar-brand fs-3 font-monospace" href="{% url "index" %}">AskProgers</a>
+
+            <form class="d-flex w-25" role="search">
+                <input class="form-control me-2" type="search" placeholder="Поиск..." aria-label="Поиск...">
+            </form>
+
+            <form class="d-flex gap-2">
+                <a class="btn btn-primary" type="button" href="#">
+                    Задать вопрос
+                </a>
+            </form>
+
+            <div class="d-flex gap-2 align-items-center">
+                <div class="content">
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-primary btn-sm" type="button" href="#">Регистрация</a>
+                        <a class="btn btn-dark btn-sm" type="button" href="#">Вход</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="row">
+
+            <div class="col-1"></div>
+
+            <section class="col">
+                {% block content %}
+                {% endblock %}
+            </section>
+
+            <aside class="col-2">
+                <section class="mb-3">
+                    <h4>Популярные теги</h4>
+                    <div>
+                        <a class="link-primary link-underline-opacity-0" href="#">
+                            <span class="badge rounded-pill text-bg-primary">Primary</span>
+                        </a>
+                        <a class="link-primary link-underline-opacity-0" href="#">
+                            <span class="badge rounded-pill text-bg-secondary">Secondary</span>
+                        </a>
+                        <a class="link-primary link-underline-opacity-0" href="#">
+                            <span class="badge rounded-pill text-bg-success">Success</span>
+                        </a>
+                        <a class="link-primary link-underline-opacity-0" href="#">
+                            <span class="badge rounded-pill text-bg-danger">Danger</span>
+                        </a>
+                        <a class="link-primary link-underline-opacity-0" href="#">
+                            <span class="badge rounded-pill text-bg-warning">Warning</span>
+                        </a>
+                        <a class="link-primary link-underline-opacity-0" href="#">
+                            <span class="badge rounded-pill text-bg-info">Info</span>
+                        </a>
+                        <a class="link-primary link-underline-opacity-0" href="#">
+                            <span class="badge rounded-pill text-bg-light">Light</span>
+                        </a>
+                        <a class="link-primary link-underline-opacity-0" href="#">
+                            <span class="badge rounded-pill text-bg-dark">Dark</span>
+                        </a>
+                    </div>
+                </section>
+
+                <section>
+                    <h4>Лучшие пользователи</h4>
+                    <div>
+                        <a class="d-block link-primary link-underline-opacity-0" href="#">Member</a>
+                        <a class="d-block link-primary link-underline-opacity-0" href="#">Member</a>
+                        <a class="d-block link-primary link-underline-opacity-0" href="#">Member</a>
+                        <a class="d-block link-primary link-underline-opacity-0" href="#">Member</a>
+                        <a class="d-block link-primary link-underline-opacity-0" href="#">Member</a>
+                    </div>
+                </section>
+            </aside>
+
+            <div class="col-1"></div>
+        </div>
+    </main>
+    <script src="{% static "/js/bootstrap.bundle.min.js" %}"></script>
+</body>
+</html>
