@@ -29,6 +29,9 @@ ANSWERS = [
     ] for j in range(len(QUESTIONS))
 ]
 
+def popular_tags(request):
+    return {'bar_tags': TAGS}
+
 def paginate(objects_list, request, per_page):
     page_num = request.GET.get('page', 1)
     paginator = Paginator(objects_list, per_page)
