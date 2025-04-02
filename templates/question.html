@@ -1,6 +1,10 @@
 {% extends "layouts/base_login.html" %}
 {% load static %}
 
+{% block head %}
+    <title>{{ question.title }}</title>
+{% endblock %}
+
 {% block content %}
     <main class="container">
         <div class="row">
@@ -55,7 +59,7 @@
                                 <div class="mb-3 align-self-end">
                                     <span>Теги:</span>
                                     {% for tag in question.tags %}
-                                        <a class="link-primary link-underline-opacity-0" href="#">
+                                        <a class="link-primary link-underline-opacity-0" href="{% url 'tag' tag %}">
                                             <span class="badge rounded-pill text-bg-primary">{{ tag }}</span>
                                         </a>
                                     {% endfor %}
@@ -65,15 +69,9 @@
                     </div>
                 </div>
 
-                <ul class="nav mb-2 nav-underline">
+                <div class="nav mb-2 nav-underline">
                     <h4>Ответы: {{ question.num_ans }}</h4>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Последние</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Популярные</a>
-                    </li>
-                </ul>
+                </div>
 
                 <answers class="d-flex gap-3 flex-column">
                     {% for ans in answers %}
@@ -144,29 +142,7 @@
                         </div>
                     {% endfor %}
 
-                    <nav class="mt-2">
-                        <ul class="pagination justify-content-end">
-                            <li class="page-item">
-                                <a class="page-link text-dark" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item active">
-                                <a class="page-link text-dark" href="#">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link text-dark" href="#">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link text-dark" href="#">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link text-dark" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    {% include "layouts/pagination.html" %}
 
                     <div class="container border-0 mt-4 p-0">
                         <div class="mb-3">

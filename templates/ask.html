@@ -1,0 +1,68 @@
+{% extends "layouts/base_login.html" %}
+{% load static %}
+
+{% block head %}
+    <title>Задать вопрос</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h3>Новый вопрос</h3>
+        <form class="row needs-validation mt-3">
+
+            <div class="col-10 mb-3">
+                <label for="validationCustom01" class="form-label">Заголовок вопроса:</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="validationCustom01"
+                    placeholder="Введите заголовок вопроса..."
+                    minlength="5"
+                    maxlength="200"
+                >
+                <span class="text-danger row ms-2">
+                    Введите заголовок вопроса!
+                </span>
+            </div>
+
+            <div class="col-10 mb-3">
+                <label for="validationCustom02" class="form-label">Описание вопроса:</label>
+                <textarea
+                    class="form-control"
+                    id="validationCustom02"
+                    rows="5"
+                    placeholder="Подробнее опишите вопрос..."
+                    style="resize: none;"
+                    minlength="10"
+                    maxlength="3000"
+                ></textarea>
+                <span class="text-danger row ms-2">
+                    Опишите вопрос подробнее!
+                </span>
+            </div>
+
+            <div class="col-10 mb-3">
+                <label for="validationCustom03" class="form-label">Тэги:</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="validationCustom03"
+                        placeholder="Введите тэги через запятую"
+                >
+                <small class="form-text text-muted p-1">
+                    Например: HTML, CSS, JavaScript
+                </small>
+                <span class="text-danger row ms-2">
+                    Внесите тэги вопроса!
+                </span>
+                <span class="text-danger row ms-2">
+                    Некорректная форма ввода тэгов!
+                </span>
+            </div>
+
+            <div class="col-10 d-flex justify-content-end">
+                <button class="btn btn-dark" type="submit">Отправить</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

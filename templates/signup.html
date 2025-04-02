@@ -1,0 +1,112 @@
+{% extends "layouts/base_login.html" %}
+{% load static %}
+
+{% block head %}
+    <title>Регистрация</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="row d-flex justify-content-center">
+            <div class="col-2"></div>
+            <h3 class="col">Регистрация</h3>
+        </div>
+        
+        <form class="row d-flex justify-content-center needs-validation mt-3">
+            <div class="col-8 mb-3">
+                <label for="validationLogin" class="form-label">Логин:</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="validationLogin"
+                    placeholder="Введите логин"
+                    pattern="^[a-zA-Z0-9]+$"
+                    minlength="5"
+                    maxlength="30"
+                >
+                <span class="text-danger row ms-1">
+                    Неверный формат ввода!
+                </span>
+            </div>
+
+            <div class="col-8 mb-3">
+                <label for="validationMail" class="form-label">E-mail:</label>
+                <input
+                    type="email"
+                    class="form-control"
+                    id="validationMail"
+                    placeholder="Введите почту"
+                >
+                <span class="text-danger row ms-1">
+                    Неверный формат ввода!
+                </span>
+                <span class="text-danger row ms-1">
+                    Введенный E-mail уже зарегестрирован!
+                </span>
+            </div>
+
+            <div class="col-8 mb-4">
+                <label for="validationNick" class="form-label">Никнейм:</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="validationNick"
+                    placeholder="Введите никнейм"
+                    minlength="5"
+                    maxlength="20"
+                >
+                <span class="text-danger row ms-1">
+                    Неверный формат ввода!
+                </span>
+                <span class="text-danger row ms-1">
+                    Введенный никнейм уже существует!
+                </span>
+            </div>
+
+            <div class="col-8 mb-3">
+                <label for="validPassword" class="form-label">Пароль:</label>
+                <input
+                        type="password"
+                        class="form-control"
+                        id="validPassword"
+                        placeholder="Введите пароль"
+                        minlength="8"
+                        maxlength="20"
+                >
+                <span class="text-danger row ms-1">
+                    Неверный формат ввода!
+                </span>
+            </div>
+
+            <div class="col-8 mb-4">
+                <label for="repeatPassword" class="form-label">Повторите пароль:</label>
+                <input
+                        type="password"
+                        class="form-control"
+                        id="repeatPassword"
+                        placeholder="Повторите пароль"
+                >
+                <span class="text-danger row ms-1">
+                    Пароли не совпадают!
+                </span>
+            </div>
+
+            <div class="col-8  mb-3">
+                <label for="inputFile" class="form-label">Загрузить аватарку:</label>
+                <div class="ratio ratio-1x1 mb-2 ms-3" style="width: 100px;">
+                    <img src="#" class="img-fluid" alt="userimg">
+                </div>
+                <input
+                    type="file"
+                    class="form-control"
+                    id="inputFile"
+                    accept="image/*"
+                >
+            </div>
+
+            <div class="col-8 d-flex justify-content-end mb-2">
+                <button class="btn btn-dark" type="submit">Зарегестрироваться</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

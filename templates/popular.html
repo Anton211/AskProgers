@@ -1,6 +1,9 @@
 {% extends "layouts/base_login.html" %}
 {% load static %}
 
+{% block head %}
+    <title>Популярные вопросы</title>
+{% endblock %}
 
 {% block content %}
     <ul class="nav nav-underline">
@@ -70,7 +73,7 @@
                                 <div class="col">
                                     <span>Теги:</span>
                                     {% for tag in question.tags %}
-                                        <a class="link-primary link-underline-opacity-0" href="#">
+                                        <a class="link-primary link-underline-opacity-0" href="{% url 'tag' tag %}">
                                             <span class="badge rounded-pill text-bg-primary">{{ tag }}</span>
                                         </a>
                                     {% endfor %}
@@ -82,28 +85,7 @@
             </div>
         {% endfor %}
 
-        <nav>
-            <ul class="pagination justify-content-end">
-                <li class="page-item">
-                    <a class="page-link text-dark" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item active">
-                    <a class="page-link text-dark" href="#">1</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link text-dark" href="#">2</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link text-dark" href="#">3</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link text-dark" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        {% include "layouts/pagination.html" %}
+
     </articles>
 {% endblock %}

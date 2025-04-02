@@ -1,0 +1,99 @@
+{% extends "layouts/base_login.html" %}
+{% load static %}
+
+{% block head %}
+    <title>Настройки</title>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row d-flex justify-content-center">
+        <div class="col-2"></div>
+        <h3 class="col">Настройки: UserName</h3>
+    </div>
+
+    <form id="change" class="row d-flex justify-content-center needs-validation mt-3">
+
+        <div class="col-8 mb-3">
+            <label for="changeNickname" class="form-label">Изменить никнейм:</label>
+            <input
+                type="text"
+                name="nickname"
+                class="form-control"
+                id="changeNickname"
+                value="UserName"
+                placeholder="Введите новый никнейм"
+            >
+            <span class="text-danger row ms-1">
+                Неверный формат ввода!
+            </span>
+            <span class="text-danger row ms-1">
+                Введенный никнейм уже существует!
+            </span>
+        </div>
+
+        <div class="col-8 mb-3">
+            <label for="updateFile" class="form-label">Изменить аватарку:</label>
+            <div class="ratio ratio-1x1 mb-2 ms-3" style="width: 100px;">
+                <img src="#" class="img-fluid" alt="userimg">
+            </div>
+            <input
+                type="file"
+                name="avatar"
+                class="form-control"
+                id="updateFile"
+                accept="image/*"
+            >
+        </div>
+
+        <div id="changePassword" class="col-8 mb-3">
+            <label for="changePassw" class="form-label">Изменить пароль:</label>
+            <div class="col mb-3 ms-3" id="changePassw">
+                <label for="passwOld" class="form-label">Текущий пароль:</label>
+                <input
+                    type="password"
+                    name="passwOld"
+                    class="form-control br-1"
+                    id="passwOld"
+                    placeholder="Введите текущий пароль"
+                >
+                <span class="text-danger row ms-1">
+                    Пароль неверный!
+                </span>
+            </div>
+
+            <div class="col mb-3 ms-3">
+                <label for="passwNew" class="form-label">Новый пароль:</label>
+                <input
+                    type="password"
+                    name="passwNew"
+                    class="form-control br-1"
+                    id="passwNew"
+                    placeholder="Введите новый пароль"
+                >
+                <span class="text-danger row ms-1">
+                    Некорректный пароль!
+                </span>
+            </div>
+
+            <div class="col mb-3 ms-3">
+                <label for="repeatPassword" class="form-label">Повторите пароль:</label>
+                <input
+                    type="password"
+                    class="form-control"
+                    id="repeatPassword"
+                    placeholder="Повторите новый пароль"
+                >
+                <span class="text-danger row ms-1">
+                    Пароли не совпадают!
+                </span>
+            </div>
+
+        </div>
+
+        <div class="col-8 d-flex justify-content-end mb-2">
+            <button id="submit" class="btn btn-dark" type="submit">Сохранить изменения</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

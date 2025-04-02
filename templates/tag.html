@@ -2,19 +2,13 @@
 {% load static %}
 
 {% block head %}
-    <title>Последние вопросы</title>
+    <title>Вопросы: {{ tag }}</title>
 {% endblock %}
 
 {% block content %}
-    <ul class="nav nav-underline">
-        <h2>Вопросы</h2>
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Последние</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url "popular" %}">Популярные</a>
-        </li>
-    </ul>
+    <div class="nav nav-underline">
+        <h2>Вопросы: {{ tag }}</h2>
+    </div>
 
     <articles class="d-flex gap-3 flex-column">
         {% for question in questions %}
