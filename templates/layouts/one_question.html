@@ -1,0 +1,67 @@
+{% load static %}
+
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-2">
+
+                <div class="text-center">
+                    <h6>{{ question.profile.user.username }}</h6>
+                </div>
+
+                <div class="ratio ratio-1x1 mb-2 w-100" style="width: 55px;">
+                    <img src="{{ MEDIA_URL }}{{ question.profile.avatar }}" class="img-fluid" alt="img">
+                </div>
+
+                <div class="d-flex justify-content-center">
+
+                    <a type="button" class="no-border-button p-1">
+                        <div class="ratio ratio-1x1" style="width: 20px;">
+                            <img src="{% static "/img/arrow-up.svg" %}" class="img-fluid" alt="arrow up">
+                        </div>
+                    </a>
+
+                    <div class="d-flex text-success align-items-center ms-1 me-1">
+                        {{ question.rating }}
+                    </div>
+
+                    <a type="button" class="no-border-button p-1">
+                        <div class="ratio ratio-1x1" style="width: 20px;">
+                            <img src="{% static "/img/arrow-down.svg" %}" class="img-fluid"
+                                 alt="arrow down">
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col d-flex flex-column justify-content-between">
+
+                <div>
+                    <a class="link-primary link-underline-opacity-0"
+                       href="{% url "question" question.id %}">
+                        <h5 class="card-title">{{ question.title }}</h5>
+                    </a>
+                    <p class="card-text p-1">{{ question.content }}</p>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <a class="link-primary link-underline-opacity-0"
+                           href="{% url "question" question.id %}">
+                            Ответы ({{ question.num_answers }})
+                        </a>
+                    </div>
+
+                    <div class="col">
+                        <span>Тэги:</span>
+                        {% for tag in question.tags.all %}
+                            <a class="link-primary link-underline-opacity-0" href="{% url 'tag' tag.name %}">
+                                <span class="badge rounded-pill text-bg-primary">{{ tag.name }}</span>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

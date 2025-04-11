@@ -16,10 +16,10 @@
                         <div class="row">
                             <div class="col-3">
                                 <div class="text-center">
-                                    <h5>{{ question.username }}</h5>
+                                    <h5>{{ question.user.username }}</h5>
                                 </div>
                                 <div class="ratio ratio-1x1 mb-2 mt-2 w-100" style="width: 100px;">
-                                    <img src="{% static question.photo %}" class="img-fluid" alt="img">
+                                    <img src="{{ MEDIA_URL }}{{ question.profile.avatar }}" class="img-fluid" alt="img">
                                 </div>
 
                                 <div class="d-flex justify-content-center">
@@ -29,7 +29,7 @@
                                         </div>
                                     </a>
                                     <div class="d-flex text-success align-items-center ms-1 me-1">
-                                        {{ question.rate }}
+                                        {{ question.rating }}
                                     </div>
                                     <a type="button" class="no-border-button p-1">
                                         <div class="ratio ratio-1x1" style="width: 25px;">
@@ -41,7 +41,7 @@
 
                                 <p class="card-text text-center">
                                     <small class="text-body-secondary">
-                                        Вопрос задан: <br> {{ question.date }}
+                                        Вопрос задан: <br> {{ question.create_dt }}
                                     </small>
                                 </p>
                             </div>
@@ -57,10 +57,10 @@
                                 </div>
 
                                 <div class="mb-3 align-self-end">
-                                    <span>Теги:</span>
-                                    {% for tag in question.tags %}
-                                        <a class="link-primary link-underline-opacity-0" href="{% url 'tag' tag %}">
-                                            <span class="badge rounded-pill text-bg-primary">{{ tag }}</span>
+                                    <span>Тэги:</span>
+                                    {% for tag in question.tags.all %}
+                                        <a class="link-primary link-underline-opacity-0" href="{% url 'tag' tag.name %}">
+                                            <span class="badge rounded-pill text-bg-primary">{{ tag.name }}</span>
                                         </a>
                                     {% endfor %}
                                 </div>
@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="nav mb-2 nav-underline">
-                    <h4>Ответы: {{ question.num_ans }}</h4>
+                    <h4>Ответы: {{ question.num_answers }}</h4>
                 </div>
 
                 <answers class="d-flex gap-3 flex-column">
@@ -80,11 +80,11 @@
                                 <div class="row">
                                     <div class="col-2">
                                         <div class="text-center">
-                                            <h6>{{ ans.username }}</h6>
+                                            <h6>{{ ans.profile.user.username }}</h6>
                                         </div>
 
                                         <div class="ratio ratio-1x1 mb-2 w-100" style="width: 100px;">
-                                            <img src="{% static ans.photo %}" alt="img" class="img-fluid">
+                                            <img src="{{ MEDIA_URL }}{{ans.profile.avatar}}" alt="img" class="img-fluid">
                                         </div>
 
                                         <div class="d-flex justify-content-center">
@@ -96,7 +96,7 @@
                                             </a>
 
                                             <div class="d-flex text-success align-items-center ms-1 me-1">
-                                                {{ ans.rate }}
+                                                {{ ans.rating }}
                                             </div>
 
                                             <a type="button" class="no-border-button p-1">
@@ -116,7 +116,7 @@
                                         </div>
 
                                         <div class="row">
-                                            {% if ans.true %}
+                                            {% if ans.is_true %}
                                                 <div class="col text-success">
                                                     <p class="card-text">
                                                         <img src="{% static "img/check2-all.svg" %}" width="30"
@@ -131,7 +131,7 @@
                                             <div class="col">
                                                 <p class="text-center">
                                                     <small class="text-body-secondary">
-                                                        Дата ответа: {{ ans.date }}
+                                                        Дата ответа: {{ ans.create_dt }}
                                                     </small>
                                                 </p>
                                             </div>
@@ -153,6 +153,7 @@
                             </div>
                         </div>
                     </div>
-
+                </answers>
             </section>
+        </div>
 {% endblock %}

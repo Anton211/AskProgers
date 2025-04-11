@@ -50,11 +50,11 @@
 
             <aside class="col-2">
                 <section class="mb-3">
-                    <h4>Популярные теги</h4>
+                    <h4>Популярные тэги</h4>
                     <div>
-                        {% for tag in bar_tags %}
-                            <a class="link-primary link-underline-opacity-0" href="{% url 'tag' tag%}">
-                                <span class="badge rounded-pill text-bg-primary">{{ tag }}</span>
+                        {% for tag in side_tags %}
+                            <a class="link-primary link-underline-opacity-0" href="{% url 'tag' tag.name %}">
+                                <span class="badge rounded-pill text-bg-primary">{{ tag.name }}</span>
                             </a>
                         {% endfor %}
                     </div>
@@ -63,11 +63,9 @@
                 <section>
                     <h4>Лучшие пользователи</h4>
                     <div>
-                        <a class="d-block link-primary link-underline-opacity-0" href="#">Member</a>
-                        <a class="d-block link-primary link-underline-opacity-0" href="#">Member</a>
-                        <a class="d-block link-primary link-underline-opacity-0" href="#">Member</a>
-                        <a class="d-block link-primary link-underline-opacity-0" href="#">Member</a>
-                        <a class="d-block link-primary link-underline-opacity-0" href="#">Member</a>
+                        {% for profile in top_users %}
+                            <a class="d-block link-primary link-underline-opacity-0" href="#">{{ profile.user.username }}</a>
+                        {% endfor %}
                     </div>
                 </section>
             </aside>
